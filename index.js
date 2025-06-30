@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 app.get('/pokemon/:name', async (req, res) => {
     try {
         const { name } = req.params;
-        const response = await axios.get(`hhttps://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
         const pokemon = response.data;
 
-        res.render('pokemon', pokemon);
+        res.render('pokemon', {pokemon});
     } catch (e) {
         console.error('Error fetching Pokémon:', e.message);
         res.status(404).render('error', { message: 'Pokemon not found' });
